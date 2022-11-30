@@ -1,0 +1,386 @@
+/* PAGE */
+/* html {
+    box-sizing: border-box;
+} */
+/* *, *::before, *::after {
+    box-sizing: border-box;
+} */
+body {
+    background-color: #EDEDE9;
+    margin: 0;
+    Font-Family: 'Poppins', Sans-Serif;
+    Font-Size: 18px;
+}
+/* .logo {
+    padding: 50px 0 0 50px;
+} */
+/* Navigation */
+header {
+    background: hsla(6, 9%, 40%, .6);
+    text-align: center;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    position: sticky;
+}
+.logo {
+    margin: 0;
+}
+.site-title {
+    /* position:fixed; */
+    top: 0;
+    width: 100%;
+}
+.nav-toggle {
+    display: none;
+}
+.nav-toggle-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 1em;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.nav-toggle-label span, .nav-toggle-label span::before, .nav-toggle-label span::after {
+    display: block;
+    background: #E3D5CA;
+    height: 2px;
+    width: 2em;
+    border-radius: 2px;
+    position: relative;
+}
+.nav-toggle-label span::before, .nav-toggle-label span::after {
+    content: '';
+    position: absolute;
+}
+.nav-toggle-label span::before {
+    bottom: 7px;
+}
+.nav-toggle-label span::after {
+    top: 7px;
+}
+
+nav {
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    left: 0;
+    background: hsla(6, 9%, 40%, .6);
+    width: 100%;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 400ms ease-in-out;
+}
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+nav li {
+    margin-bottom: 1em;
+    margin-left: 1em;
+}
+nav a {
+    color: #E3D5CA;
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+}
+nav a:hover {
+    color:#D5BDAF;
+}
+.nav-toggle:checked ~ nav { 
+    transform: scale(1,1)
+}
+.nav-toggle:checked ~ nav a {
+    opacity: 1;
+    transition: opacity 250ms ease-in-out 250ms;
+}
+
+@media screen and (min-width: 768px) {
+    .nav-toggle-label {
+        display: none;
+    }
+    header {
+        display: grid;
+        grid-template-columns: 1fr auto minmax(600px 1fr) 1fr;
+        /* position: sticky; */
+    }
+    .logo {
+        grid-column: 1 / 2;
+    }
+    nav {
+        all: unset;
+        grid-column: 3 / 4;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    nav ul {
+        display: flex;
+        justify-content: flex-end;
+    }
+    nav li {
+        margin-left: 3em;
+        margin-bottom: 0;
+        margin-right: 3em;
+    }
+    nav a {
+        opacity: 1;
+    }
+}
+
+
+
+
+
+/* TEXT */
+
+h1, h2 {
+    Font-Family: 'Abril Fatface', Cursive;
+    text-align: center;
+}
+
+
+/* ABOUT */
+.about {
+    display: grid;
+    align-items: center;
+    margin-top: 100px;
+    grid-template-areas: 
+    "image-section-one"
+    "image-section-two"
+    "title"
+    "text"
+    ;
+}
+@media (min-width:40em){
+    .about {
+        grid-template-areas: "image-section-one image-section-one image-section-one"
+        
+        "title text text"
+        "image-section-two image-section-two image-section-two"
+    }
+}
+.about h2 {
+    grid-area: title;
+    font-size: 4rem;
+    color:#6F5E5C;
+    padding: 4rem;
+    z-index: 1;
+}
+.about p {
+    grid-area: text;
+    background: #D6CCC2;
+    padding: 1em;
+}
+.about img {
+    grid-column: 1 / 3;
+    grid-row: image-section-one / image-section-two;
+    width: 70%;
+    height: 75%;
+    object-fit: cover;
+}
+
+/* PORTFOLIO */
+
+
+
+
+
+
+
+.cards {
+    /* max-width: 40em; */
+    margin: 1em;
+    margin-bottom: 100px;
+    padding: 0;
+    list-style-type: none;
+    /* background-color: #6F5E5C; */
+}
+.cards a {
+    display: block;
+    margin-bottom: 1em;
+    text-decoration: none;
+    /* color:black; */
+}
+.caption {
+    padding: 1em;
+    background:hsla(6, 9%, 40%, .6);
+    color:#E3D5CA;
+    font-size: 1.2em;
+    transition: all .4s;
+}
+a:focus .caption,
+a:hover .caption {
+    background:hsla(6, 9%, 40%, 1)
+}
+.caption-title {
+    margin: 0;
+    font-size: 2em;
+}
+/* .caption p {
+    margin-top: .5em;
+    margin-bottom: 0;
+} */
+
+
+/* CSS Grid layout for wider screens, when browser supports grid: */
+@supports (grid-area: auto) {
+@media screen and (min-width:40em) {
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1em;
+        
+    }
+    .cards a {
+        margin-bottom: 0;
+    }
+    .card {
+        display: grid;
+    }
+    .card img, .caption {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    .caption {
+        display: flex;
+        align-items: flex-end;
+        /* opacity: 0; */
+    }
+
+    a:focus .caption,
+    a:hover .caption, {
+        background:hsla(6, 9%, 40%, .6);
+        opacity: 1;
+    }
+}
+
+@media screen and (min-width: 80em) {
+    .cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color:hsla(6, 9%, 40%, .6);
+    color:#EDEDE9;
+    text-align: center;
+}
+ a:link {
+    color: #362d2c;;
+}
+
+ a:visited {
+    color: #6F5E5C;
+}
+
+ a:hover {
+    color: #D5BDAF;
+}
+
+/* EXPERIENCE PAGE */
+
+.content-wrap {
+    max-width: 900px;
+    width: 85%;
+    margin: 0 auto;
+    padding: 60px 0;
+}
+.content-wrap img{
+    display: inline-block;
+    float: left;
+    margin: 20px;
+}
+h3 {
+    margin-bottom: 0;
+}
+.item-details h3 + p {
+    font-style: italic;
+}
+.item-details h3 ~ p {
+    margin: 0;
+}
+.divider > section {
+    border-bottom: 1px dashed #343434;
+    padding: 25px 0;
+}
+.divider > section:last-of-type {
+    border-bottom: none;
+}
+
+/* WORK EXPERIENCE*/
+.work{
+    background-color: #E3D5CA;
+    color: #313638;
+}
+
+/* EDUCATION & CERTIFICATIONS */
+.education{
+    float: clear;
+    background-color: #D5BDAF;
+    color:#313638;
+}
+.education {
+    background-image:url(../placeholder_images/sharon-mccutcheon-unsplash.jpg);
+    background-size: cover;
+    background-position: top right;
+    padding: 100px;
+}
+.education p {
+    width: 60%;
+}
+@media screen and (min-width: 750px){
+    .project-item img{
+        display: inline-block;
+        margin: 20px;
+    }
+    .job-item {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        column-gap: 20px;
+    }
+}
+
+/* CONTACT */
+/* .grid-span-3 {
+    grid-column: span 3;
+    background-image: url(/images/contact_phone-cord.jpg);
+    width: 100%;
+    height: 100%;
+} */
+
+.contact-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-block: 2rem;
+    width: min(95%, 70rem);
+    margin-inline: auto;
+}
+.contact {
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 5px 10px hsla(6, 9%, 40%, .2);
+    text-align: center;
+}
+.contact a:link {
+    color: #362d2c;
+}
+
+
+
+/* Photo by <a href="https://unsplash.com/@quinoal?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Quino Al</a> on <a href="https://unsplash.com/s/photos/contact?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+   */
